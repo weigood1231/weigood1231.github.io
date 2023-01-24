@@ -53,7 +53,7 @@ const musicData = [
 ];
 
 /**
- * add eventListener on all elements that are passed
+ * add eventListnere on all elements that are passed
  */
 
 const addEventOnElements = function (elements, eventType, callback) {
@@ -73,29 +73,24 @@ const playlist = document.querySelector("[data-music-list]");
 for (let i = 0, len = musicData.length; i < len; i++) {
   playlist.innerHTML += `
   <li>
-              <button
-                class="music-item ${i === 0 ? "playing" : ""}"
-                data-playlist-toggler
-                data-playlist-item="${i}"
-              >
-                <img
-                  src="${musicData[i].posterUrl}"
-                  width="800"
-                  height="800"
-                  alt="${musicData[i].title}"
-                  class="img-cover"
-                />
+    <button class="music-item ${
+      i === 0 ? "playing" : ""
+    }" data-playlist-toggler data-playlist-item="${i}">
+      <img src="${musicData[i].posterUrl}" width="800" height="800" alt="${
+    musicData[i].title
+  } Album Poster"
+        class="img-cover">
 
-                <div class="item-icon">
-                  <span class="material-symbols-rounded">equalizer</span>
-                </div>
-              </button>
-            </li>
+      <div class="item-icon">
+        <span class="material-symbols-rounded">equalizer</span>
+      </div>
+    </button>
+  </li>
   `;
 }
 
 /**
- * PLAYLIST SIDEBAR TOGGLE
+ * PLAYLIST MODAL SIDEBAR TOGGLE
  *
  * show 'playlist' modal sidebar when click on playlist button in top app bar
  * and hide when click on overlay or any playlist-item
@@ -120,7 +115,7 @@ addEventOnElements(playlistTogglers, "click", togglePlaylist);
  * and add active state in clicked music
  */
 
-const playlistItems = document.querySelectorAll("[data-playlist-item");
+const playlistItems = document.querySelectorAll("[data-playlist-item]");
 
 let currentMusic = 0;
 let lastPlayedMusic = 0;
@@ -165,7 +160,6 @@ const changePlayerInfo = function () {
   audioSource.src = musicData[currentMusic].musicPath;
 
   audioSource.addEventListener("loadeddata", updateDuration);
-
   playMusic();
 };
 
@@ -216,7 +210,7 @@ playBtn.addEventListener("click", playMusic);
 
 /** update running time while playing music */
 
-const playerRunningTime = document.querySelector("[data-running-time]");
+const playerRunningTime = document.querySelector("[data-running-time");
 
 const updateRunningTime = function () {
   playerSeekRange.value = audioSource.currentTime;
@@ -283,7 +277,7 @@ const skipNext = function () {
   if (isShuffled) {
     shuffleMusic();
   } else {
-    currentMusic >= musicData.lenght - 1 ? (currentMusic = 0) : currentMusic++;
+    currentMusic >= musicData.length - 1 ? (currentMusic = 0) : currentMusic++;
   }
 
   changePlayerInfo();
@@ -318,7 +312,7 @@ playerSkipPrevBtn.addEventListener("click", skipPrev);
  */
 
 /** get random number for shuffle */
-const getRandomMusic = () => Math.floor(Math.random * musicData.length);
+const getRandomMusic = () => Math.floor(Math.random() * musicData.length);
 
 const shuffleMusic = () => (currentMusic = getRandomMusic());
 
