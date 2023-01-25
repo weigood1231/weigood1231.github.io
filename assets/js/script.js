@@ -267,6 +267,9 @@ const isMusicEnd = function () {
     audioSource.currentTime = 0;
     playerSeekRange.value = audioSource.currentTime;
     playerRunningTime.textContent = getTimecode(audioSource.currentTime);
+
+    skipNext();
+
     updateRangeFill();
   }
 };
@@ -318,7 +321,7 @@ playerSkipPrevBtn.addEventListener("click", skipPrev);
  */
 
 /** get random number for shuffle */
-const getRandomMusic = () => Math.floor(Math.random * musicData.length);
+const getRandomMusic = () => Math.floor(Math.random() * musicData.length);
 
 const shuffleMusic = () => (currentMusic = getRandomMusic());
 
